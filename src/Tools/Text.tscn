@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Tools/BaseTool.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Tools/Text.gd" type="Script" id=2]
+[ext_resource path="res://src/UI/Nodes/ValueSlider.tscn" type="PackedScene" id=3]
+
+[node name="ToolOptions" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="FontLabel" type="Label" parent="." index="2"]
+margin_top = 26.0
+margin_right = 116.0
+margin_bottom = 40.0
+text = "Font:"
+
+[node name="FontOptionButton" type="OptionButton" parent="." index="3"]
+margin_top = 44.0
+margin_right = 116.0
+margin_bottom = 64.0
+mouse_default_cursor_shape = 2
+text = "Roboto"
+items = [ "Roboto", null, false, 0, null, "NotoSansCJK", null, false, 1, null ]
+selected = 0
+
+[node name="TextSizeSlider" parent="." index="4" instance=ExtResource( 3 )]
+margin_top = 68.0
+margin_right = 116.0
+margin_bottom = 92.0
+min_value = 1.0
+max_value = 128.0
+value = 16.0
+allow_greater = true
+prefix = "Size:"
+suffix = "px"
+snap_step = 2.0
+
+[node name="LoadFontButton" type="Button" parent="." index="5"]
+margin_top = 96.0
+margin_right = 116.0
+margin_bottom = 116.0
+mouse_default_cursor_shape = 2
+text = "Load Font"
+
+[node name="OutlineContainer" type="HBoxContainer" parent="." index="6"]
+margin_top = 120.0
+margin_right = 116.0
+margin_bottom = 144.0
+alignment = 1
+
+[node name="OutlineColorPickerButton" type="ColorPickerButton" parent="OutlineContainer" index="0"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 0 )
+mouse_default_cursor_shape = 2
+color = Color( 1, 1, 1, 1 )
+
+[node name="OutlineSlider" parent="OutlineContainer" index="1" instance=ExtResource( 3 )]
+margin_left = 28.0
+margin_right = 116.0
+prefix = "Outline:"
+suffix = "px"
+
+[node name="FontFileDialog" type="FileDialog" parent="." index="7"]
+margin_right = 400.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 400, 400 )
+window_title = "Open File(s)"
+resizable = true
+mode = 1
+access = 2
+filters = PoolStringArray( "*.ttf", "*.otf" )
+show_hidden_files = true
+
+[connection signal="item_selected" from="FontOptionButton" to="." method="_on_FontOptionButton_item_selected"]
+[connection signal="value_changed" from="TextSizeSlider" to="." method="_on_TextSizeSlider_value_changed"]
+[connection signal="pressed" from="LoadFontButton" to="." method="_on_LoadFontButton_pressed"]
+[connection signal="color_changed" from="OutlineContainer/OutlineColorPickerButton" to="." method="_on_OutlineColorPickerButton_color_changed"]
+[connection signal="value_changed" from="OutlineContainer/OutlineSlider" to="." method="_on_OutlineSlider_value_changed"]
+[connection signal="files_selected" from="FontFileDialog" to="." method="_on_FontFileDialog_files_selected"]
+[connection signal="popup_hide" from="FontFileDialog" to="." method="_on_FontFileDialog_popup_hide"]

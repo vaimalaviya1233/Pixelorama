@@ -224,6 +224,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/Canvas/Rulers/SymmetryGuide.gd"
 }, {
+"base": "TextEdit",
+"class": "TextToolEdit",
+"language": "GDScript",
+"path": "res://src/UI/Nodes/TextToolEdit.gd"
+}, {
 "base": "Reference",
 "class": "Tiles",
 "language": "GDScript",
@@ -278,6 +283,7 @@ _global_script_class_icons={
 "ShaderImageEffect": "",
 "ShortcutProfile": "",
 "SymmetryGuide": "",
+"TextToolEdit": "",
 "Tiles": "",
 "ValueSlider": ""
 }
@@ -983,6 +989,16 @@ left_paint_selection_tool={
 right_paint_selection_tool={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":73,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left_text_tool={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right_text_tool={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":true,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
